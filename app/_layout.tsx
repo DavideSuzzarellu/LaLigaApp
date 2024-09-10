@@ -8,22 +8,24 @@ import { TeamsProvider } from "../context/TeamsContext";
 const HeaderLogo = () => {
   return (
     <View className="flex flex-row gap-1">
-      <MarkLogo/>
-      <Logo/>
+      <MarkLogo />
+      <Logo />
     </View>
-  )
-}
+  );
+};
 
 const Layout = () => {
   return (
     <TeamsProvider>
-      <Stack 
+      <Stack
         screenOptions={{
-          headerStyle: {backgroundColor: "slate-700"},
+          headerStyle: { backgroundColor: "slate-700" },
           headerLeft: HeaderLogo,
           headerRight: undefined,
-          headerTitle: undefined,
-        }}/>
+          headerTitle: "",
+          headerBackTitleVisible: false,
+        }}
+      />
     </TeamsProvider>
   );
 };

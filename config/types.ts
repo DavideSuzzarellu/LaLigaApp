@@ -12,7 +12,7 @@ type Team = {
     idLeague: string;
     strLeague2: string;
     idLeague2: string;
-    strLeague3?: string; 
+    strLeague3?: string;
     idLeague3?: string | null;
     strLeague4?: string;
     idLeague4?: string | null;
@@ -65,10 +65,20 @@ type Team = {
     strLocked: string;
 };
 
+type Equipments = {
+    idEquipment: string
+    idTeam: string,
+    date: string,
+    strSeason: "2019-2020",
+    strEquipment: string,
+    strType: string,
+    strUsername: string
+}
+
 type LigaTeams = Team[] | undefined;
 
 export type {
     Team,
-    LigaTeams
+    LigaTeams,
+    Equipments
 }
-  

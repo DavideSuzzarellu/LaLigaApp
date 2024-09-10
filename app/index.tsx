@@ -1,14 +1,13 @@
-import { StatusBar } from 'expo-status-bar'
-import React, { useEffect } from 'react'
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TeamsProvider } from '../context/TeamsContext';
-import { Main } from '../components/Main';
-import { fetchTeams } from '../utils/apiFunction';
-import useTeamsContext from '../hooks/useTeamContext';
-
+import { TeamsProvider } from "../context/TeamsContext";
+import { Main } from "../components/Main";
+import { fetchTeams } from "../utils/apiFunction";
+import useTeamsContext from "../hooks/useTeamContext";
 
 export const Index = () => {
-  const { setTeams } = useTeamsContext()
+  const { setTeams } = useTeamsContext();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -16,7 +15,7 @@ export const Index = () => {
 
     fetchTeams(signal, setTeams);
     console.log("Effect");
-    
+
     return () => {
       controller.abort();
     };
@@ -26,12 +25,10 @@ export const Index = () => {
     <SafeAreaProvider>
       <StatusBar style="auto" />
       <TeamsProvider>
-        <Main/>
+        <Main />
       </TeamsProvider>
     </SafeAreaProvider>
   );
 };
 
 export default Index;
-
-
