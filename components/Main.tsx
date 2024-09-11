@@ -15,9 +15,7 @@ export const Main = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const signal = controller.signal;
-
-    fetchTeams(signal, setTeams);
+    fetchTeams(controller.signal, setTeams);
 
     return () => {
       controller.abort();

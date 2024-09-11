@@ -75,10 +75,47 @@ type Equipments = {
     strUsername: string
 }
 
+type Venue = {
+    idVenue: string;
+    idDupe: string | null;
+    strVenue: string;
+    strVenueAlternate: string | null;
+    strVenueSponsor: string | null;
+    strSport: string;
+    strDescriptionEN: string;
+    strArchitect: string | null;
+    intCapacity: string;
+    strCost: string;
+    strCountry: string;
+    strLocation: string;
+    strTimezone: string | null;
+    intFormedYear: string;
+    strFanart1: string;
+    strFanart2: string;
+    strFanart3: string;
+    strFanart4: string;
+    strThumb: string;
+    strLogo: string;
+    strMap: string;
+    strWebsite: string;
+    strFacebook: string;
+    strInstagram: string;
+    strTwitter: string;
+    strYoutube: string;
+    strLocked: string;
+}
+
+
+type VenuesProps = {
+    venues?: Venue[]
+}
+
 type LigaTeams = Team[] | undefined;
 
 export type {
     Team,
     LigaTeams,
-    Equipments
+    Equipments,
+    VenuesProps,
+    Venue
 }

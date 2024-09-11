@@ -10,9 +10,14 @@ interface EquipmentProps {
 
 export const Equipment: React.FC<EquipmentProps> = ({ teamId }) => {
     const [equipments, setEquipments] = useState<Equipments[]>([]);
+    const controller = new AbortController();
 
     useEffect(() => {
-        fetchEquipment(teamId, setEquipments);
+        fetchEquipment(teamId, controller.signal, setEquipments);
+
+        return () => {
+            controller.abort();
+        };
     }, [teamId]);
 
     return (

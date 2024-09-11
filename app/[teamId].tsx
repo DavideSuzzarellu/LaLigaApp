@@ -7,18 +7,15 @@ import useTeamsContext from '../hooks/useTeamContext';
 import { teamColors } from '../utils/teamColors';
 import { FacebookLogo, InstagramLogo, WebLogo, XLogo } from '../components/Icons';
 import { Equipment } from '../components/Equipments';
+import { Venues } from '../components/Venues';
 
 const TeamDetails = () => {
   const { teamId } = useLocalSearchParams();
   const { teams } = useTeamsContext();
   const [activeSection, setActiveSection] = useState('history');
-
   const team = teams?.find((team) => team.idTeam === teamId);
-  console.log("team", team);
-
   const colors = teamColors[team?.strTeam ?? 0] || ['#FFFFFF', '#000000'];
   const [backgroundColor, textColor] = colors;
-
 
   const openURL = (url: string) => {
     Linking.openURL(url).catch((err) => console.error("Error al abrir URL:", err));
@@ -73,12 +70,12 @@ const TeamDetails = () => {
           </Pressable>
           <Pressable
             style={{
-              backgroundColor: activeSection === 'stadium' ? 'red' : 'transparent',
+              backgroundColor: activeSection === 'venue' ? 'red' : 'transparent',
               height: "100%",
               paddingHorizontal: 10,
               paddingVertical: 8
             }}
-            onPress={() => setActiveSection('stadium')}>
+            onPress={() => setActiveSection('venue')}>
             <Text style={{ color: textColor }}>Stadium</Text>
           </Pressable>
           <Pressable
@@ -122,6 +119,9 @@ const TeamDetails = () => {
           )}
           {activeSection === 'equipment' && (
             <Equipment teamId={team.idTeam} />
+          )}
+          {activeSection === 'venue' && (
+            <Venues venueId={team.idVenue} />
           )}
         </View>
       </ScrollView>
