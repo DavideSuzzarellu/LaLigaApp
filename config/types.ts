@@ -1,4 +1,4 @@
-type Team = {
+interface Team {
     idTeam: string;
     idSoccerXML: string;
     idAPIfootball: string;
@@ -65,7 +65,7 @@ type Team = {
     strLocked: string;
 };
 
-type Equipments = {
+interface Equipments {
     idEquipment: string
     idTeam: string,
     date: string,
@@ -75,7 +75,7 @@ type Equipments = {
     strUsername: string
 }
 
-type Venue = {
+interface Venue {
     idVenue: string;
     idDupe: string | null;
     strVenue: string;
@@ -105,9 +105,78 @@ type Venue = {
     strLocked: string;
 }
 
-
-type VenuesProps = {
+interface VenuesProps {
     venues?: Venue[]
+}
+
+interface TeamPlayer {
+    idPlayer: string;
+    idTeam: string;
+    idTeam2: string | null;
+    idTeamNational: string | null;
+    idSoccerXML: string;
+    idAPIfootball: string;
+    idPlayerManager: string | null;
+    idWikidata: string | null;
+    strNationality: string;
+    strPlayer: string;
+    strPlayerAlternate: string;
+    strTeam: string;
+    strTeam2: string;
+    strSport: string;
+    intSoccerXMLTeamID: string;
+    dateBorn: string;
+    strNumber: string;
+    dateSigned: string;
+    strSigning: string;
+    strWage: string;
+    strOutfitter: string;
+    strKit: string;
+    strAgent: string;
+    strBirthLocation: string;
+    strEthnicity: string;
+    strStatus: string;
+    strDescriptionEN: string;
+    strDescriptionDE: string | null;
+    strDescriptionFR: string | null;
+    strDescriptionCN: string | null;
+    strDescriptionIT: string | null;
+    strDescriptionJP: string | null;
+    strDescriptionRU: string | null;
+    strDescriptionES: string | null;
+    strDescriptionPT: string | null;
+    strDescriptionSE: string | null;
+    strDescriptionNL: string | null;
+    strDescriptionHU: string | null;
+    strDescriptionNO: string | null;
+    strDescriptionIL: string | null;
+    strDescriptionPL: string | null;
+    strGender: string;
+    strSide: string;
+    strPosition: string;
+    strCollege: string | null;
+    strFacebook: string;
+    strWebsite: string;
+    strTwitter: string;
+    strInstagram: string;
+    strYoutube: string;
+    strHeight: string;
+    strWeight: string;
+    intLoved: string;
+    strThumb: string;
+    strCutout: string;
+    strRender: string;
+    strBanner: string | null;
+    strFanart1: string | null;
+    strFanart2: string | null;
+    strFanart3: string | null;
+    strFanart4: string | null;
+    strCreativeCommons: string;
+    strLocked: string;
+}
+
+interface TeamPlayerProps {
+    player: TeamPlayer[]
 }
 
 type LigaTeams = Team[] | undefined;
@@ -117,5 +186,7 @@ export type {
     LigaTeams,
     Equipments,
     VenuesProps,
-    Venue
+    Venue,
+    TeamPlayerProps,
+    TeamPlayer
 }

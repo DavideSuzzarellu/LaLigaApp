@@ -8,6 +8,7 @@ import { teamColors } from '../utils/teamColors';
 import { FacebookLogo, InstagramLogo, WebLogo, XLogo } from '../components/Icons';
 import { Equipment } from '../components/Equipments';
 import { Venues } from '../components/Venues';
+import { TeamPlayers } from '../components/TeamPlayers';
 
 const TeamDetails = () => {
   const { teamId } = useLocalSearchParams();
@@ -76,7 +77,7 @@ const TeamDetails = () => {
               paddingVertical: 8
             }}
             onPress={() => setActiveSection('venue')}>
-            <Text style={{ color: textColor }}>Stadium</Text>
+            <Text style={{ color: textColor }}>Estadio</Text>
           </Pressable>
           <Pressable
             style={{
@@ -100,14 +101,8 @@ const TeamDetails = () => {
           </Pressable>
         </ScrollView>
         <View className='px-2 pb-10'>
-          {activeSection === 'stadium' && (
-            <View>
-              <Text style={{ color: textColor }}>Nombre: {team?.strStadium}</Text>
-              <Text style={{ color: textColor }}>Ubicacion: {team?.strLocation}</Text>
-              <Text style={{ color: textColor }}>Capacidad: {team?.intStadiumCapacity}</Text>
-              <Text style={{ color: textColor }}>Ubicacion: {team?.strLocation}</Text>
-            </View>
-          )}
+          {activeSection === 'players' && (
+            <TeamPlayers teamName={team.strColour1} />)}
           {activeSection === 'details' && (
             <View>
               <Text style={{ color: textColor }}>Nombre Completo: {team?.strTeam}</Text>

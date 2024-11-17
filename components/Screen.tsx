@@ -6,5 +6,9 @@ interface ScreenProps {
 }
 
 export const Screen: React.FC<ScreenProps> = ({ children }) => {
-  return <View className="flex-1 flex-grow w-full h-full bg-[#FFFFFF]">{children}</View>;
+  return (
+    <View className="flex-1 flex-grow w-full h-full bg-[#FFFFFF]">
+      {children}
+    </View>
+  )
 };

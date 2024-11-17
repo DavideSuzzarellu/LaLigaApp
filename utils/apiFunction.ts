@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Equipments, LigaTeams, Venue } from "../config/types";
+import { Equipments, LigaTeams, TeamPlayer, Venue } from "../config/types";
 
 export async function fetchTeams(
   signal: AbortSignal,
@@ -14,6 +14,31 @@ export async function fetchTeams(
 
     const data = await res.json();
     setTeams(data.teams);
+  } catch (error) {
+    if (error instanceof Error) {
+      if (error.name === "AbortError") {
+        console.log("Fetch aborted");
+      } else {
+        console.error("Fetch error:", error);
+      }
+    }
+  }
+}
+
+export async function fetchTeamPlayers(
+  signal: AbortSignal,
+  teamName: string,
+  setTeamPlayers: Dispatch<SetStateAction<TeamPlayer[]>>
+) {
+  try {
+    const res = await fetch(
+      `https://www.thesportsdb.com/api/v1/json/3/searchplayers.php?t=${teamName}`,
+      { signal }
+    );
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+    const data = await res.json();
+    setTeamPlayers(data?.player)
   } catch (error) {
     if (error instanceof Error) {
       if (error.name === "AbortError") {
@@ -47,7 +72,6 @@ export async function fetchEquipment(
   }
 }
 
-
 export async function fetchVenue(
   venueId: string,
   signal: AbortSignal,
@@ -72,3 +96,10 @@ export async function fetchVenue(
     }
   }
 };
+
+export async function fetchTeam(
+  teamId: string,
+  signal: AbortSignal,
+  setTeam: Dispatch<SetStateAction<Equipments[]>>) {
+
+}

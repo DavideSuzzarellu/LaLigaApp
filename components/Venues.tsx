@@ -19,6 +19,7 @@ export const Venues: React.FC<VenueProps> = ({ venueId }) => {
             controller.abort();
         };
     }, [venueId]);
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
             {venue && Object.keys(venue).length > 0 ? (
